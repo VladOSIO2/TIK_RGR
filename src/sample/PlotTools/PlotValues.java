@@ -6,10 +6,10 @@ import java.util.TreeMap;
 import java.util.function.Function;
 
 public class PlotValues {
-    private Map<Double, Double> points;
-    private double xMin;
-    private double xMax;
-    private double dx;
+    private final Map<Double, Double> points;
+    private final double xMin;
+    private final double xMax;
+    private final double dx;
     private double yMin;
     private double yMax;
 

@@ -60,10 +60,12 @@ public class AxesPane extends Pane {
 
     //mapping x to pane coordinates
     public double mapX(double x) {
-        double sx = this.getPrefWidth() /
-                (xAxis.getUpperBound() -
-                        xAxis.getLowerBound());
-        return x * sx + xCenter;
+        double xMax = xAxis.getUpperBound();
+        double xMin = xAxis.getLowerBound();
+        double sx = this.getPrefWidth() / (xMax - xMin);
+        return isZeroInRange(xMin, xMax) ?
+                x * sx + xCenter :
+                x * sx + xCenter - xMin * sx;
     }
 
     //mapping y to pane coordinates

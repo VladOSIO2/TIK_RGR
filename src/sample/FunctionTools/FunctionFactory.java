@@ -13,7 +13,8 @@ public class FunctionFactory {
     }
 
     private static Function<Double, Double> getFunctionCFCA(double a, double b) {
-        return x -> Math.pow(Math.E, Math.abs(Math.sin(3*a*x + b)));
+        return x -> Math.pow(Math.E, Math.abs(Math.sin(3*a*x + b))) *
+                x / Math.pow(Math.sqrt(a*x) + b*x*x, 3);
     }
 
     private static Function<Double, Double> getFunctionDFDA(double a, double b) {

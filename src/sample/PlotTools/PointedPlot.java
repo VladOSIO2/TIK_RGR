@@ -34,10 +34,14 @@ public class PointedPlot extends Pane {
     public PointedPlot(PlotValues plotValues, AxesPane axesPane) {
         List<Circle> points = new ArrayList<>();
         for (Map.Entry<Double, Double> plotPoint : plotValues.getPoints().entrySet()) {
-            Circle point = new Circle(0.4, Color.BLUE);
-            point.setCenterX(axesPane.mapX(plotPoint.getKey()));
-            point.setCenterY(axesPane.mapY(plotPoint.getValue()));
-            points.add(point);
+            double y = plotPoint.getValue();
+            if (!Double.isNaN(y)) {
+                double x = plotPoint.getKey();
+                Circle point = new Circle(0.4, Color.BLUE);
+                point.setCenterX(axesPane.mapX(x));
+                point.setCenterY(axesPane.mapY(y));
+                points.add(point);
+            }
         }
 
         setPrefSize(axesPane.getPrefWidth(), axesPane.getPrefHeight());
